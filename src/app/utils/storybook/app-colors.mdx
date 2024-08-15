@@ -1,0 +1,11 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+
+import { APP_COLORS } from './app-colors.enum.ts';
+
+<Meta title="Colors" />
+
+<ColorPalette>
+  {APP_COLORS.map((c, i) => {
+    return <ColorItem key={i} title={`${c.title}`} colors={[`${c.color}`]} />;
+  })}
+</ColorPalette>
