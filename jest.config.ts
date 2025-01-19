@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'template-nx-project',
+  displayName: 'angular-components-and-patterns',
   preset: './jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   coverageDirectory: './coverage',

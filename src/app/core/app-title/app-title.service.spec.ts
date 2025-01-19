@@ -31,7 +31,9 @@ describe('AppTitleService', () => {
       root: { queryParams: {} },
     } as unknown as RouterStateSnapshot;
     service.updateTitle(snapshot);
-    expect(title.getTitle()).toStrictEqual('template_nx_project_name - Page');
+    expect(title.getTitle()).toStrictEqual(
+      'Angular Components and Patterns - Page',
+    );
   });
 
   it('should updateTitle with deep url', () => {
@@ -40,7 +42,9 @@ describe('AppTitleService', () => {
       root: { queryParams: {} },
     } as unknown as RouterStateSnapshot;
     service.updateTitle(snapshot);
-    expect(title.getTitle()).toStrictEqual('template_nx_project_name - Space');
+    expect(title.getTitle()).toStrictEqual(
+      'Angular Components and Patterns - Space',
+    );
   });
 
   it('should updateTitle with url and query params', () => {
@@ -50,7 +54,7 @@ describe('AppTitleService', () => {
     } as unknown as RouterStateSnapshot;
     service.updateTitle(snapshot);
     expect(title.getTitle()).toStrictEqual(
-      'template_nx_project_name - Search: "bob"',
+      'Angular Components and Patterns - Search: "bob"',
     );
   });
 });

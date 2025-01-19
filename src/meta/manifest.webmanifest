@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "template_nx_project_name",
-  "short_name": "template_nx_project_name",
-  "description": "template_nx_project_description",
+  "name": "Angular Components and Patterns",
+  "short_name": "Angular Components and Patterns",
+  "description": "Collections of useful angular components and patterns",
   "theme_color": "#ffffff",
   "background_color": "#000000",
   "display": "standalone",
@@ -18,16 +18,16 @@
       "sizes": "500x850",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "template_nx_project_name Mobile",
-      "description": "template_nx_project_description"
+      "label": "Angular Components and Patterns Mobile",
+      "description": "Collections of useful angular components and patterns"
     },
     {
       "src": "assets/screenshots/screenshot_1280x720.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "template_nx_project_name Desktop",
-      "description": "template_nx_project_description"
+      "label": "Angular Components and Patterns Desktop",
+      "description": "Collections of useful angular components and patterns"
     }
   ],
   "icons": [

@@ -13,7 +13,7 @@
 //   // Colors
 //   colorPrimary: 'ffffff',
 //   colorSecondary: '#ffffff',
-//   brandTitle: 'template-nx-project',
+//   brandTitle: 'angular-components-and-patterns',
 //   appBg: '#000000',
 // });
 

@@ -1,11 +1,11 @@
-# template_nx_project_name [App](https://deniszholob.github.io/template-nx-project/)
+# Angular Components and Patterns [App](https://deniszholob.github.io/angular-components-and-patterns/)
 
-template_nx_project_description
+Collections of useful angular components and patterns
 
-## Deployments [![Build Status](https://github.com/deniszholob/template-nx-project/actions/workflows/main.yml/badge.svg)](https://github.com/deniszholob/template-nx-project/actions/workflows/main.yml)
+## Deployments [![Build Status](https://github.com/deniszholob/angular-components-and-patterns/actions/workflows/code-checks.yml/badge.svg)](https://github.com/deniszholob/angular-components-and-patterns/actions/workflows/main.yml)
 
 - Master branch is for the source code that's hosted on
-  [GhPages](https://deniszholob.github.io/template-nx-project/)
+  [GhPages](https://deniszholob.github.io/angular-components-and-patterns/)
 
 # Support Me
 
@@ -16,4 +16,4 @@ If you find the cheat sheet or the source code useful, consider:
 
 # Screenshots
 
-![template_nx_project_name](./global/assets/screenshots/screenshot_1280x720.png)
+![Angular Components and Patterns](./global/assets/screenshots/screenshot_1280x720.png)
