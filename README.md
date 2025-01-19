@@ -2,7 +2,7 @@
 
 Collections of useful angular components and patterns
 
-## Deployments [![Build Status](https://github.com/deniszholob/angular-components-and-patterns/actions/workflows/code-checks.yml/badge.svg)](https://github.com/deniszholob/angular-components-and-patterns/actions/workflows/main.yml)
+## Deployments [![Build Status](https://github.com/deniszholob/angular-components-and-patterns/actions/workflows/code-checks.yml/badge.svg)](https://github.com/deniszholob/angular-components-and-patterns/actions/workflows/code-checks.yml)
 
 - Master branch is for the source code that's hosted on
   [GhPages](https://deniszholob.github.io/angular-components-and-patterns/)
