@@ -1,3 +1,0 @@
-User-Agent: *
-Disallow: /assets/*
-Sitemap: https://deniszholob.github.io/angular-components-and-patterns/sitemap.xml

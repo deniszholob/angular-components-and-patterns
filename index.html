@@ -1,100 +1,189 @@
-<!doctype html>
-<html class lang="en" data-beasties-container>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <!-- Meta Data -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Denis Zholob">
-    <meta name="keywords" content="Denis, Zholob, Angular, Components, Patterns, Template">
-    <meta name="title" content="Angular Components and Patterns">
-    <meta name="description" content="Collections of useful angular components and patterns">
+    <meta charset="utf-8" />
 
-    <!-- Google / Search Engine Tags -->
-    <meta itemprop="name" content="Angular Components and Patterns">
-    <meta itemprop="description" content="Collections of useful angular components and patterns">
-    <meta itemprop="image" content="https://deniszholob.github.io/angular-components-and-patterns/assets/icons/splash.png">
+    <title>@storybook/angular - Storybook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://deniszholob.github.io/angular-components-and-patterns/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Angular Components and Patterns">
-    <meta property="og:description" content="Collections of useful angular components and patterns">
-    <meta property="og:image" content="https://deniszholob.github.io/angular-components-and-patterns/assets/icons/splash.png">
-    <meta property="og:author" content="Denis Zholob">
-
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Angular Components and Patterns">
-    <meta name="twitter:description" content="Collections of useful angular components and patterns">
-    <meta name="twitter:image" content="https://deniszholob.github.io/angular-components-and-patterns/assets/icons/splash.png">
-    <meta name="twitter:site" content="@deniszholob">
-    <meta name="twitter:creator" content="@deniszholob">
-
-    <!-- Title/Icon -->
-    <title>Angular Components and Patterns</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="apple-touch-startup-image" href="assets/icons/splash.jpg">
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#ffffff">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <base href="/angular-components-and-patterns/">
-
-    <!-- PWA -->
-    <link rel="manifest" href="manifest.webmanifest">
-    <meta name="theme-color" content="#ffffff">
-
-    <!-- Meta Tags Generated via http://heymeta.com -->
-    <!-- Icons generated with https://realfavicongenerator.net/ -->
-
-    <!-- Prefetch/Preconnect -->
-    <!-- <link rel="dns-prefetch" href="https://fonts.googleapis.com"> -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous"> -->
-    <!-- <link rel="dns-prefetch" href="https://fonts.gstatic.com/s/"> -->
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com/s/" crossorigin="anonymous"> -->
-    <link rel="dns-prefetch" href="https://use.fontawesome.com">
-    <link rel="preconnect" href="https://use.fontawesome.com" crossorigin="anonymous">
-
-    <!-- Bootstrap -->
-    <!-- <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"> -->
-
-    <!-- Fonts -->
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?"> -->
-    <script defer src="https://use.fontawesome.com/releases/v6.6.0/js/all.js" integrity="sha384-dgEl3vRKux81M373f/TdgoDTV5oZj+yjHrr/1qR5b4btG5q63kYS62t5kod+7Q6v" crossorigin="anonymous"></script>
-
-    <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-28080172-12"></script>
-    <script async>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+    
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    
+    <style>
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-regular.woff2') format('woff2');
       }
-      gtag('js', new Date());
-      gtag('config', 'UA-28080172-12');
+
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-italic.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-bold.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: italic;
+        font-weight: 700;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-bold-italic.woff2') format('woff2');
+      }
+    </style>
+
+    <link href="./sb-manager/runtime.js" rel="modulepreload" />
+
+    
+    <link href="./sb-addons/storybook-core-core-server-presets-0/common-manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-controls-1/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-actions-2/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-docs-3/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-backgrounds-4/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-viewport-5/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-toolbars-6/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-measure-7/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-outline-8/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/a11y-9/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/interactions-10/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/angular-router-preset-11/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/storybook-12/manager-bundle.js" rel="modulepreload" />
+       
+
+    <style>
+      #storybook-root[hidden] {
+        display: none !important;
+      }
+    </style>
+
+    
+  </head>
+  <body>
+    <div id="root"></div>
+
+    
+    <script>
+      
+        
+          window['FEATURES'] = {
+  "argTypeTargetsV7": true,
+  "legacyDecoratorFileOrder": false,
+  "disallowImplicitActionsInRenderV8": true
+};
+        
+      
+        
+          window['REFS'] = {};
+        
+      
+        
+          window['LOGLEVEL'] = "info";
+        
+      
+        
+          window['DOCS_OPTIONS'] = {
+  "defaultName": "Docs",
+  "autodocs": "tag"
+};
+        
+      
+        
+          window['CONFIG_TYPE'] = "PRODUCTION";
+        
+      
+        
+      
+        
+      
+        
+          window['TAGS_OPTIONS'] = {
+  "dev-only": {
+    "excludeFromDocsStories": true
+  },
+  "docs-only": {
+    "excludeFromSidebar": true
+  },
+  "test-only": {
+    "excludeFromSidebar": true,
+    "excludeFromDocsStories": true
+  }
+};
+        
+      
+        
+          window['STORYBOOK_RENDERER'] = "angular";
+        
+      
+        
+          window['STORYBOOK_BUILDER'] = "@storybook/builder-webpack5";
+        
+      
+        
+          window['STORYBOOK_FRAMEWORK'] = "@storybook/angular";
+        
+      
+    </script>
+    
+
+    <script type="module">
+      import './sb-manager/globals-runtime.js';
+      
+      
+        import './sb-addons/storybook-core-core-server-presets-0/common-manager-bundle.js';
+      
+        import './sb-addons/essentials-controls-1/manager-bundle.js';
+      
+        import './sb-addons/essentials-actions-2/manager-bundle.js';
+      
+        import './sb-addons/essentials-docs-3/manager-bundle.js';
+      
+        import './sb-addons/essentials-backgrounds-4/manager-bundle.js';
+      
+        import './sb-addons/essentials-viewport-5/manager-bundle.js';
+      
+        import './sb-addons/essentials-toolbars-6/manager-bundle.js';
+      
+        import './sb-addons/essentials-measure-7/manager-bundle.js';
+      
+        import './sb-addons/essentials-outline-8/manager-bundle.js';
+      
+        import './sb-addons/a11y-9/manager-bundle.js';
+      
+        import './sb-addons/interactions-10/manager-bundle.js';
+      
+        import './sb-addons/angular-router-preset-11/manager-bundle.js';
+      
+        import './sb-addons/storybook-12/manager-bundle.js';
+      
+      
+      import './sb-manager/runtime.js';
     </script>
 
-    <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles-5INURTSO.css"></head>
-
-  <body>
-    <app-root>
-      <div style="text-align: center; padding-top: 20px">
-        <i class="fa fa-spinner fa-spin"></i> Loading...
-
-        <p>
-          If this is loading forever, there may be a bug.
-          <br>
-          Hit <strong>F12</strong> to bring up the Debug console, and
-          <a href="https://github.com/deniszholob/angular-components-and-patterns/issues" target="_blank" rel="noopener">
-            report
-          </a>
-          any errors.
-        </p>
-      </div>
-    </app-root>
-
-    <noscript> Please enable JavaScript to continue using this application. </noscript>
-  <link rel="modulepreload" href="chunk-SB6CQQQL.js"><script src="polyfills-SC4UBBZS.js" type="module"></script><script src="main-Q334I5KX.js" type="module"></script></body>
+    
+    <link href="./sb-preview/runtime.js" rel="prefetch" as="script" />
+    
+  </body>
 </html>

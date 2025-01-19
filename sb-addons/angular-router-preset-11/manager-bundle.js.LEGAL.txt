@@ -1,0 +1,4 @@
+Bundled license information:
+
+storybook-addon-angular-router/dist/preset/manager.js:
+  /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
