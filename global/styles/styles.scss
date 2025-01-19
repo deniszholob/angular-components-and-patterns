@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files 
+ * @ref: https://tailwindcss.com/docs/adding-custom-styles
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/** The base layer is for things like reset rules or default styles applied to plain HTML elements. */
+@layer base {
+  /* Override preflight's default sans font choice to be serif (https://tailwindcss.com/docs/preflight) */
+  /* html, :host { @apply font-serif; } */
+}
+
+/** The components layer is for class-based styles that you want to be able to override with utilities. */
+@layer components {
+}
+
+/** The utilities layer is for small, single-purpose classes that should always take precedence over any other styles. */
+@layer utilities {
+}
