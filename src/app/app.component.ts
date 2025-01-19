@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { APP_MODIFIED_DATE } from './app.modified';
+import { ThemeToggleService } from './utils';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +13,6 @@ import { APP_MODIFIED_DATE } from './app.modified';
 })
 export class AppComponent {
   protected readonly APP_MODIFIED_DATE: number = APP_MODIFIED_DATE;
+
+  constructor(protected themeToggleService: ThemeToggleService) {}
 }

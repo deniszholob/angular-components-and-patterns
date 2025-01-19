@@ -11,5 +11,5 @@ module.exports = {
     extend: {},
   },
   plugins: [require('@tailwindcss/forms')],
-  // darkMode: 'selector', // Enable dark mode
+  darkMode: 'selector', // Enable dark mode
 };
