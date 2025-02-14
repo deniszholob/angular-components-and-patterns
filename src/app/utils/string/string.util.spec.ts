@@ -8,6 +8,12 @@ describe('string-functions', () => {
       expect(stripStartString(original, remove)).toBe('hello');
     });
 
+    it('should strip the start of the original string if it starts with the remove string even if its 1 character', () => {
+      const original = '/';
+      const remove = '/';
+      expect(stripStartString(original, remove)).toBe('');
+    });
+
     it('should return the original string if it does not start with the remove string', () => {
       const original = 'hello';
       const remove = 'prefix_';

@@ -1,0 +1,19 @@
+<!-- Drag and drop area -->
+<div
+  class="relative rounded-lg border-2 border-dashed p-4 hover:cursor-pointer hover:border-blue-200 hover:bg-blue-50"
+  [dragOverClass]="'bg-blue-200 border-blue-500'"
+  (filesSelected)="onFileSelect($event)"
+  appFileDrop
+>
+  {{ text }}
+  <!-- File input -->
+  <input
+    class="absolute left-0 top-0 z-10 h-full w-full cursor-pointer opacity-0"
+    [attr.multiple]="multiple ? '' : null"
+    [attr.webkitdirectory]="webkitdirectory ? '' : null"
+    (filesSelected)="onFileSelect($event)"
+    type="file"
+    aria-label="Select Files"
+    appFileSelect
+  />
+</div>
