@@ -1,9 +1,9 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 /**
- * @ref https://github.com/angular/angular/issues/28731
- * @ref https://github.com/angular/components/issues/22290
- * @ref https://nartc.me/blog/typed-mat-cell-def/
- * @ref https://angular.dev/guide/directives/structural-directives#typing-the-directives-context
+ * @see https://github.com/angular/angular/issues/28731
+ * @see https://github.com/angular/components/issues/22290
+ * @see https://nartc.me/blog/typed-mat-cell-def/
+ * @see https://angular.dev/guide/directives/structural-directives#typing-the-directives-context
  *
  * @usage
  * **.ts**

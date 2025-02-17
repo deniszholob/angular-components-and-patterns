@@ -12,7 +12,7 @@ export function isObject<T>(obj: T): boolean {
   return obj != null && typeof obj === 'object' && !(obj instanceof Array);
 }
 
-/** @ref https://stackoverflow.com/a/679915#59787784 */
+/** @see https://stackoverflow.com/a/679915#59787784 */
 export function isObjectEmpty<T>(obj: T): boolean {
   for (const k in obj) return false;
   return true;
@@ -30,7 +30,7 @@ export function doKeysMatchObject<T>(
 
 type GenericObject = Record<string, unknown>;
 
-/** @ref https://gist.github.com/ScriptedAlchemy/25be43bfb45baaf047a7991de4b64127 */
+/** @see https://gist.github.com/ScriptedAlchemy/25be43bfb45baaf047a7991de4b64127 */
 export function deepMergeObjects<T extends GenericObject>(...objects: T[]): T {
   return objects.reduce((acc: T, cur: T): T => {
     Object.keys(cur).forEach((key: keyof T): void => {

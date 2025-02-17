@@ -39,8 +39,8 @@ export class AppErrorHandlerService extends ErrorHandler {
   /**
    * Change detection will not run on async errors
    * Needs ngZone.run() to have things executed withing angular zone, with change detection etc..
-   * @ref https://youtu.be/e03EHZIVJtM?si=xJ9G9Qt7_0bWkrls&t=1037
-   * @ref https://github.com/angular/angular/issues/19984
+   * @see https://youtu.be/e03EHZIVJtM?si=xJ9G9Qt7_0bWkrls&t=1037
+   * @see https://github.com/angular/angular/issues/19984
    */
   private handleAppError({ appError, error }: UnhandledError): void {
     this.ngZone.run(() => {

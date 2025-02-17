@@ -3,7 +3,7 @@ import { TestScheduler } from 'rxjs/testing';
 
 import { addDelay, addError } from './storybook.util';
 
-// @ref: https://rxjs.dev/guide/testing/marble-testing
+// @see: https://rxjs.dev/guide/testing/marble-testing
 
 describe('storybook-functions', () => {
   describe('addDelay', () => {

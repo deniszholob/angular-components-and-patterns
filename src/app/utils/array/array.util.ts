@@ -9,7 +9,7 @@ export function safeArrayIndex<T>(arr: T[], i: number): T {
   );
 }
 
-/** @ref https://stackoverflow.com/a/3895478#10050831 */
+/** @see https://stackoverflow.com/a/3895478#10050831 */
 export function range(
   size: number,
   startAt: number = 0,
@@ -181,7 +181,7 @@ export function arrayFindDuplicates<T>(arr: T[]): T[] {
  * Creates groups of arrays based on @chunkSize
  * If @chunkSize is 2 and arr=[1,2,3,4,5] then return [[1,2],[3,4],[5]]
  * If @chunkSize is 0 then return [arr]
- * @ref https://stackoverflow.com/questions/7273668/how-to-split-a-long-array-into-smaller-arrays-with-javascript
+ * @see https://stackoverflow.com/questions/7273668/how-to-split-a-long-array-into-smaller-arrays-with-javascript
  */
 export function chunk<T>(arr: T[], chunkSize: number = 2): T[][] {
   if (chunkSize === 0) return [arr];

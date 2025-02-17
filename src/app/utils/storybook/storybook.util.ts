@@ -4,7 +4,7 @@ import { delay, Observable, throwError } from 'rxjs';
 /** Storybook calls Json.stringify on all props to display in docs
  * FormControl has circular json structure which causes an error
  * This adds an override json function that just returns null
- * @ref https://github.com/storybookjs/storybook/issues/16855#issuecomment-1900540330
+ * @see https://github.com/storybookjs/storybook/issues/16855#issuecomment-1900540330
  * @usage {args: {control: new StorybookFormControl() }}
  */
 export class StorybookFormControl extends FormControl {
@@ -16,7 +16,7 @@ export class StorybookFormControl extends FormControl {
 /** Storybook calls Json.stringify on all props to display in docs
  * FormControl has circular json structure which causes an error
  * This adds an override json function that just returns null
- * @ref https://github.com/storybookjs/storybook/issues/16855#issuecomment-1900540330
+ * @see https://github.com/storybookjs/storybook/issues/16855#issuecomment-1900540330
  * @usage {args: {group: new StorybookFormGroup() }}
  */
 export class StorybookFormGroup extends FormGroup {

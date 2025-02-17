@@ -1,5 +1,5 @@
 // LocalStorage utilities
-// @ref: https://medium.com/@gcascio/how-to-add-types-to-your-local-storage-9e47ca0087af
+// @see: https://medium.com/@gcascio/how-to-add-types-to-your-local-storage-9e47ca0087af
 
 export interface LocalStorageSchema {
   isDarkMode: boolean;
