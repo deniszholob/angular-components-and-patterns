@@ -1,15 +1,38 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import {
+  applicationConfig,
+  Meta,
+  moduleMetadata,
+  StoryObj,
+} from '@storybook/angular';
 import { AppComponent } from './app.component';
+import { Router } from '@angular/router';
+import { MOCK_Router } from './core';
+import {
+  MOCK_APP_BUILD_DATE_Token,
+  MOCK_APP_BUILD_VERSION_Token,
+} from './layout/footer/footer-tokens.mock';
 
 type ComponentWithCustomControls = AppComponent;
 
 const meta: Meta<ComponentWithCustomControls> = {
   title: 'App',
   component: AppComponent,
-  // decorators: [moduleMetadata({imports: []})],
+  decorators: [
+    moduleMetadata({
+      // imports: [RouterModule],
+      providers: [{ provide: Router, useValue: MOCK_Router }],
+    }),
+    applicationConfig({
+      providers: [
+        MOCK_APP_BUILD_DATE_Token,
+        MOCK_APP_BUILD_VERSION_Token,
+        // importProvidersFrom()
+      ],
+    }),
+  ],
   parameters: {
     docs: { description: { component: `App` } },
-    // layout: 'fullscreen',
+    layout: 'fullscreen',
   },
   argTypes: {
     // Output

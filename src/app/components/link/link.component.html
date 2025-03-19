@@ -1,0 +1,15 @@
+<a
+  class="tooltip-xs link"
+  [title]="link.title ?? link.display"
+  [appTooltip]="link.title ?? link.display"
+  [appTooltipPosition]="TooltipPosition.UP"
+  [attr.href]="link.url"
+  [attr.target]="link.external ? '_blank' : null"
+  rel="noopener noreferrer"
+>
+  @if (link.icon?.length) {
+    <div><i class="{{ link.icon }}"></i></div>
+  } @else {
+    <div>{{ link.display }}</div>
+  }
+</a>

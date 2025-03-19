@@ -8,7 +8,7 @@ const SEPARATOR = ' - ';
 
 @Injectable({ providedIn: 'root' })
 export class AppTitleService extends TitleStrategy {
-  constructor(private tile: Title) {
+  constructor(private title: Title) {
     super();
   }
 
@@ -16,7 +16,7 @@ export class AppTitleService extends TitleStrategy {
     const queryParams: Params = snapshot.root.queryParams;
     const urlSegments: string[] = getUrlSegments(snapshot.url);
     const t: string | undefined = getAppTitle(urlSegments, queryParams);
-    if (t) this.tile.setTitle(t);
+    if (t) this.title.setTitle(t);
   }
 }
 

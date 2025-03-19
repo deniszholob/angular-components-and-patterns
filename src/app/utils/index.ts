@@ -11,6 +11,7 @@ export * from './rxjs/rxjs.util';
 export * from './storybook/storybook.util';
 export * from './string/string.util';
 export * from './theme-toggle/theme-toggle.service';
+export * from './tooltip';
 
 // Files
 export * from './ts-types';

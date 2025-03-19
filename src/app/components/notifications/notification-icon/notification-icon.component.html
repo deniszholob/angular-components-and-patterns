@@ -1,0 +1,53 @@
+@let notificationType = $NotificationType();
+<span
+  class=""
+  [ngClass]="{
+    'text-cyan-400': notificationType === NotificationType.Info,
+    'text-green-400': notificationType === NotificationType.Success,
+    'text-yellow-400': notificationType === NotificationType.Warning,
+    'text-red-400': notificationType === NotificationType.Error,
+    'text-neutral-400':
+      notificationType !== NotificationType.Info &&
+      notificationType !== NotificationType.Success &&
+      notificationType !== NotificationType.Warning &&
+      notificationType !== NotificationType.Error,
+  }"
+  style="filter: drop-shadow(0px 1px 1px rgb(0 0 0 / 0.4))"
+>
+  @if (notificationType === NotificationType.Info) {
+    <span class="contents">
+      <i class="fa-solid fa-fw fa-circle-info"></i>
+      <!-- <i class="fa-solid fa-fw fa-info"></i> -->
+      <!-- <i class="fa-solid fa-fw fa-{{ circled ? 'circle-' : '' }}info"></i> -->
+      <!-- <i class="fa-solid fa-fw fa-square"></i> -->
+    </span>
+  } @else if (notificationType === NotificationType.Success) {
+    <span class="contents">
+      <i class="fa-solid fa-fw fa-circle-check"></i>
+      <!-- <i class="fa-solid fa-fw fa-check"></i> -->
+      <!-- <i class="fa-solid fa-fw fa-{{ circled ? 'circle-' : '' }}check"></i> -->
+      <!-- <i class="fa-solid fa-fw fa-circle"></i> -->
+    </span>
+  } @else if (notificationType === NotificationType.Warning) {
+    <span class="contents">
+      <!-- <i class="fa-solid fa-fw fa-triangle-exclamation"></i> -->
+      <i class="fa-solid fa-fw fa-circle-exclamation"></i>
+      <!-- <i class="fa-solid fa-fw fa-{{ circled ? 'triangle-' : '' }}exclamation"></i> -->
+      <!-- <i class="fa-solid fa-fw fa-play fa-rotate-270"></i> -->
+    </span>
+  } @else if (notificationType === NotificationType.Error) {
+    <!-- <span><i class="fa-solid fa-circle-exclamation"></i></span> -->
+    <span class="contents">
+      <!-- <i class="fa-solid fa-fw fa-circle-xmark"></i> -->
+      <!-- <i class="fa-solid fa-fw fa-circle-exclamation"></i> -->
+      <i class="fa-solid fa-fw fa-circle-minus"></i>
+      <!-- <i class="fa-solid fa-fw fa-{{ circled ? 'circle-' : '' }}exclamation"></i> -->
+      <!-- <i class="fa-solid fa-fw fa-diamond"></i> -->
+    </span>
+  } @else {
+    <span class="contents">
+      <!-- <i class="fa-solid fa-fw fa-lightbulb"></i> -->
+      <i class="fa-solid fa-fw fa-circle-question"></i>
+    </span>
+  }
+</span>

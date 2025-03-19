@@ -1,0 +1,20 @@
+@let alert = $Alert();
+
+<section
+  class="py flex w-full flex-row items-center gap-2 border decoration-clone p-1 px-2 text-white"
+  [ngClass]="{
+    'border-cyan-800 bg-cyan-950': alert.type === NotificationType.Info,
+    'border-green-800 bg-green-950': alert.type === NotificationType.Success,
+    'border-yellow-800 bg-yellow-950': alert.type === NotificationType.Warning,
+    'border-red-800 bg-red-950': alert.type === NotificationType.Error,
+    'border-neutral-600 bg-neutral-800':
+      alert.type !== NotificationType.Info &&
+      alert.type !== NotificationType.Success &&
+      alert.type !== NotificationType.Warning &&
+      alert.type !== NotificationType.Error,
+  }"
+>
+  <app-notification-icon [$NotificationType]="alert.type"></app-notification-icon>
+
+  <span>{{ alert.text }}</span>
+</section>

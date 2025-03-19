@@ -2,17 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { APP_MODIFIED_DATE } from './app.modified';
-import { ThemeToggleService } from './utils';
+import { PageLayoutComponent } from './layout/page-layout/page-layout.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styles: [':host{display:contents}'],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, PageLayoutComponent],
 })
-export class AppComponent {
-  protected readonly APP_MODIFIED_DATE: number = APP_MODIFIED_DATE;
-
-  constructor(protected themeToggleService: ThemeToggleService) {}
-}
+export class AppComponent {}

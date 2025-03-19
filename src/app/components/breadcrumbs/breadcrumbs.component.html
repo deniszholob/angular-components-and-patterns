@@ -2,7 +2,9 @@
   @for (link of links(); track $index; let last = $last) {
     <a class="link text-lg" [routerLink]="[link.id]">{{ link.display }}</a>
     @if (!last) {
-      <i class="fa-solid fa-chevron-right fa-fw text-xs"></i>
+      <span class="contents">
+        <i class="fa-solid fa-chevron-right fa-fw text-xs"></i>
+      </span>
     }
   }
 </div>

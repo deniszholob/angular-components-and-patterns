@@ -1,0 +1,12 @@
+@let navLinks = $Nav();
+
+<nav class="flex flex-row flex-wrap items-baseline">
+  @for (link of navLinks; track $index) {
+    <a class="link px-2 py-1 text-lg" [routerLink]="[link.url]" [routerLinkActive]="'font-bold'">
+      {{ link.display }}
+      @if (link.note) {
+        <small> ({{ link.note }})</small>
+      }
+    </a>
+  }
+</nav>

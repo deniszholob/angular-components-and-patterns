@@ -43,7 +43,7 @@
   }
 
   .link {
-    @apply gap-2 text-blue-500 underline hover:text-blue-600;
+    @apply cursor-pointer gap-2 text-blue-500 no-underline hover:text-blue-600;
   }
 
   /*  rounded bg-gray-600 text-white transition duration-300 ease-in-out hover:bg-gray-700 */
@@ -63,6 +63,80 @@
   .btn-primary {
     @apply bg-blue-500 text-white hover:bg-blue-600 hover:disabled:bg-blue-500;
   }
+
+  .tooltip-trigger {
+    @apply relative;
+  }
+
+  .tooltip-trigger:hover .tooltip {
+    @apply opacity-100;
+  }
+
+  .tooltip {
+    @apply h-content absolute w-max bg-neutral-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity duration-200;
+  }
+
+  .tooltip::after {
+    content: '';
+    @apply absolute block border-4 border-transparent;
+  }
+
+  /* Tooltip positions and arrows */
+  .tooltip-up {
+    @apply bottom-full left-1/2 mb-2 -translate-x-1/2;
+  }
+  .tooltip-up::after {
+    @apply left-1/2 top-full -translate-x-1/2 border-t-neutral-800;
+  }
+
+  .tooltip-down {
+    @apply left-1/2 top-full mt-2 -translate-x-1/2;
+  }
+  .tooltip-down::after {
+    @apply bottom-full left-1/2 -translate-x-1/2 border-b-neutral-800;
+  }
+
+  .tooltip-left {
+    @apply right-full top-1/2 mr-2 -translate-y-1/2;
+  }
+  .tooltip-left::after {
+    @apply left-full top-1/2 -translate-y-1/2 border-l-neutral-800;
+  }
+
+  .tooltip-right {
+    @apply left-full top-1/2 ml-2 -translate-y-1/2;
+  }
+  .tooltip-right::after {
+    @apply right-full top-1/2 -translate-y-1/2 border-r-neutral-800;
+  }
+
+  .tooltip-up-left {
+    @apply bottom-full left-0 mb-2;
+  }
+  .tooltip-up-left::after {
+    @apply left-2 top-full border-t-neutral-800;
+  }
+
+  .tooltip-up-right {
+    @apply bottom-full right-0 mb-2;
+  }
+  .tooltip-up-right::after {
+    @apply right-2 top-full border-t-neutral-800;
+  }
+
+  .tooltip-down-left {
+    @apply left-0 top-full mt-2;
+  }
+  .tooltip-down-left::after {
+    @apply bottom-full left-2 border-b-neutral-800;
+  }
+
+  .tooltip-down-right {
+    @apply right-0 top-full mt-2;
+  }
+  .tooltip-down-right::after {
+    @apply bottom-full right-2 border-b-neutral-800;
+  }
 }
 
 /** The utilities layer is for small, single-purpose classes that should always take precedence over any other styles. */
@@ -76,5 +150,13 @@
     overflow-y: overlay;
     width: 100%;
     flex: 1;
+  }
+
+  .h-content {
+    height: fit-content;
+  }
+
+  .text-muted {
+    @apply text-neutral-500 dark:text-neutral-400;
   }
 }

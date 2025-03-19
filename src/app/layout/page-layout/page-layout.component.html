@@ -1,0 +1,12 @@
+<main class="flex h-screen flex-col">
+  <!-- HEADER -->
+  <app-header [$Banner]="banner" [$Nav]="navLinks">Header Content</app-header>
+
+  <div class="flex flex-1 flex-col overflow-y-auto bg-white dark:bg-slate-900" id="main">
+    <!-- PAGE CONTENT -->
+    <ng-content></ng-content>
+  </div>
+
+  <!-- FOOTER -->
+  <app-footer></app-footer>
+</main>
