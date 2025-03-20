@@ -6,7 +6,7 @@ import { provideRouter, TitleStrategy } from '@angular/router';
 // import { environment } from '../environments/environment';
 import { APP_BUILD_DATE, APP_BUILD_VERSION } from './app.build';
 import { appRoutes } from './app.routes';
-import { AppTitleService } from './core';
+import { AppErrorsModule, AppTitleService } from './core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,7 +22,7 @@ export const appConfig: ApplicationConfig = {
       //   onSameUrlNavigation: 'reload',
       // })
     ),
-    importProvidersFrom(BrowserModule),
+    importProvidersFrom(BrowserModule, AppErrorsModule),
     { provide: Window, useValue: window },
     { provide: TitleStrategy, useClass: AppTitleService },
     // { provide: 'ENVIRONMENT', useValue: environment },
