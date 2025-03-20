@@ -1,0 +1,51 @@
+@let toast = $toast();
+
+<div
+  class="shadow-strong flex flex-col bg-neutral-200 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
+>
+  <div class="flex flex-row items-stretch justify-between">
+    <div
+      class="flex items-center p-2"
+      [ngClass]="{
+        'bg-cyan-800': toast.type === NotificationType.Info,
+        'bg-green-800': toast.type === NotificationType.Success,
+        'bg-yellow-800': toast.type === NotificationType.Warning,
+        'bg-red-900': toast.type === NotificationType.Error,
+        'bg-neutral-700':
+          toast.type !== NotificationType.Info &&
+          toast.type !== NotificationType.Success &&
+          toast.type !== NotificationType.Warning &&
+          toast.type !== NotificationType.Error,
+      }"
+    >
+      <app-notification-icon [$NotificationType]="toast.type"></app-notification-icon>
+    </div>
+
+    <div class="flex flex-1 flex-col gap-1 px-2 py-2">
+      <!-- Toast header -->
+      <div class="text-md flex items-baseline gap-2 capitalize">
+        <span class="font-bold"> {{ toast.title }} </span>
+        @if (toast.subtitle) {
+          <small class="text-neutral-400">{{ toast.subtitle }}</small>
+        }
+      </div>
+
+      <!-- Toast body -->
+      <div class="flex flex-1 text-sm">
+        <span class="text-neutral-500 dark:text-neutral-300">{{ toast.text }}</span>
+      </div>
+    </div>
+
+    <div class="flex">
+      <button class="p-2 hover:text-red-600" (click)="removeToast.emit(toast.id)">
+        <!-- × -->
+        <i class="fa-solid fa-fw fa-xmark"></i>
+      </button>
+    </div>
+  </div>
+
+  <!--  Toast Timer -->
+  <app-progress-bar
+    [$ProgressBar]="{ percentage: toast.percentage ?? 0, type: toast.type }"
+  ></app-progress-bar>
+</div>

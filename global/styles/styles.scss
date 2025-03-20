@@ -25,6 +25,10 @@
   dt {
     @apply float-left clear-left font-bold after:content-[':'];
   }
+
+  .shadow-strong {
+    box-shadow: 0 1px 5px 1px rgb(0 0 0 / 0.5);
+  }
 }
 
 /** The components layer is for class-based styles that you want to be able to override with utilities. */
@@ -50,18 +54,34 @@
 
   button,
   .btn {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 px-4 py-2;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 border border-transparent px-4 py-2;
     &:disabled {
       @apply cursor-not-allowed opacity-80;
     }
+  }
+
+  .btn-slim {
+    @apply px-2 py-0 text-sm;
   }
 
   .btn-icon {
     @apply p-2;
   }
 
+  .btn-sm {
+    @apply min-w-20;
+  }
+
   .btn-primary {
     @apply bg-blue-500 text-white hover:bg-blue-600 hover:disabled:bg-blue-500;
+  }
+
+  .btn-secondary {
+    @apply border-blue-500 text-white hover:bg-blue-600 hover:disabled:bg-blue-500;
+  }
+
+  .btn-tertiary {
+    @apply bg-neutral-500 text-neutral-800 hover:bg-neutral-600 hover:disabled:bg-neutral-500;
   }
 
   .tooltip-trigger {

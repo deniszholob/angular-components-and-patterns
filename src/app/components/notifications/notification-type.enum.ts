@@ -4,9 +4,9 @@ export enum NotificationType {
   'Warning' = 'Warning', // Typically yellow
   'Error' = 'Error', // Typically red
   'Neutral' = 'Neutral', // Typically gray
-  'Primary' = 'Primary',
-  'Secondary' = 'Secondary',
-  'Tertiary' = 'Tertiary',
+  // 'Primary' = 'Primary',
+  // 'Secondary' = 'Secondary',
+  // 'Tertiary' = 'Tertiary',
 }
 
 export const NOTIFICATION_TYPE_OPTIONS: NotificationType[] =

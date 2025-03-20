@@ -1,0 +1,19 @@
+@let progressBar = $ProgressBar();
+
+<div class="h-1 w-full bg-neutral-800 shadow-inner">
+  <div
+    class="flex h-full"
+    [style.width.%]="progressBar.percentage"
+    [ngClass]="{
+      'bg-cyan-400': progressBar.type === NotificationType.Info,
+      'bg-green-400': progressBar.type === NotificationType.Success,
+      'bg-yellow-400': progressBar.type === NotificationType.Warning,
+      'bg-red-400': progressBar.type === NotificationType.Error,
+      'bg-neutral-400':
+        progressBar.type !== NotificationType.Info &&
+        progressBar.type !== NotificationType.Success &&
+        progressBar.type !== NotificationType.Warning &&
+        progressBar.type !== NotificationType.Error,
+    }"
+  ></div>
+</div>
