@@ -1,0 +1,35 @@
+<!-- @let modal = $Modal();
+<pre>
+  app-modal
+  {{ modal | json }} 
+</pre> -->
+
+<div
+  class="p-4-lg flex flex-col gap-2 bg-neutral-800 text-neutral-100 shadow-lg dark:bg-neutral-700"
+>
+  <!-- Modal Header -->
+  <div class="flex flex-row items-center justify-between bg-neutral-600">
+    <span class="flex-1 p-2">Title</span>
+    <button
+      class="p-2 hover:text-red-600"
+      (click)="modalClose.emit(false)"
+      aria-label="Close"
+      title="Close"
+    >
+      <!-- × -->
+      <i class="fa-solid fa-fw fa-xmark"></i>
+    </button>
+  </div>
+
+  <!-- Modal Body -->
+  <div class="p-2">
+    <ng-content></ng-content>
+    stuff
+  </div>
+
+  <!-- Modal Footer -->
+  <div class="flex flex-row justify-end gap-2 border-neutral-600 px-2 pb-2">
+    <button class="btn-secondary btn-sm" (click)="modalClose.emit(false)">Cancel</button>
+    <button class="btn-primary btn-sm" (click)="modalAction.emit()">Ok</button>
+  </div>
+</div>
