@@ -2,8 +2,8 @@
 import { Meta, StoryObj } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
 
-import { NotificationIconComponent } from './notification-icon.component';
 import { NotificationType } from '../notification-type.enum';
+import { NotificationIconComponent } from './notification-icon.component';
 
 type ComponentWithCustomControls = NotificationIconComponent;
 

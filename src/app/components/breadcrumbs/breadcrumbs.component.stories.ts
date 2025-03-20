@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/angular';
 import { BreadcrumbsComponent } from './breadcrumbs.component';
 import { MOCK_BreadCrumbLinks } from './breadcrumbs.service.mock';
 
-type ComponentWithCustomControls = BreadcrumbsComponent & {};
+type ComponentWithCustomControls = BreadcrumbsComponent;
 
 const meta: Meta<ComponentWithCustomControls> = {
   title: 'Components/Breadcrumbs',

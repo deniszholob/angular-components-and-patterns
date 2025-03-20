@@ -1,7 +1,7 @@
 // @ref https://storybook.js.org/docs/writing-stories
-import { Component, Input } from '@angular/core';
-import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
+import { Meta, StoryObj } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
+
 import { TooltipDirective } from './tooltip.directive';
 import { TooltipPosition } from './tooltip-position.enum';
 

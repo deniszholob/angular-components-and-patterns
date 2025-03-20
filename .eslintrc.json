@@ -6,7 +6,7 @@
   "plugins": ["@nx", "unused-imports", "simple-import-sort", "import"],
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": ["*.ts", "*.stories.ts"], // Common settings for both
       "extends": [
         "plugin:@nx/typescript",
         "plugin:@nx/angular",
@@ -14,22 +14,6 @@
         "plugin:import/typescript"
       ],
       "rules": {
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "app",
-            "style": "camelCase"
-          }
-        ],
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "app",
-            "style": "kebab-case"
-          }
-        ],
         "@typescript-eslint/explicit-member-accessibility": [
           "error",
           {
@@ -51,18 +35,28 @@
       }
     },
     {
-      "files": ["*.html"],
-      "extends": ["plugin:@nx/angular-template"],
+      "files": ["*.ts"], // Only for regular TS files
       "rules": {
-        "@angular-eslint/template/eqeqeq": [
+        "@angular-eslint/directive-selector": [
           "error",
-          { "allowNullOrUndefined": true }
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
         ]
       }
     },
     {
-      "files": ["*.stories.ts"],
-      "extends": ["plugin:@nx/angular-template"],
+      "files": ["*.stories.ts"], // Only for Storybook TS files
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
@@ -79,6 +73,16 @@
             "prefix": "sb",
             "style": "kebab-case"
           }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@nx/angular-template"],
+      "rules": {
+        "@angular-eslint/template/eqeqeq": [
+          "error",
+          { "allowNullOrUndefined": true }
         ]
       }
     }

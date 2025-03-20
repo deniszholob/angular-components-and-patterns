@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/angular';
+
 import { NgTemplateTypeExampleComponent } from './ng-template-type-example.component';
 
 type ComponentWithCustomControls = NgTemplateTypeExampleComponent;

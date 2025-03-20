@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/angular';
-import { fireEvent, within, userEvent } from '@storybook/test';
+import { fireEvent, userEvent } from '@storybook/test';
 import {
   createMockDataTransfer,
   createMockDragEvent,
@@ -18,6 +18,7 @@ import {
   testSubfolderName1,
   testSubfolderName2,
 } from 'src/app/utils/file-selection/spec.data';
+
 import {
   DEFAULT_FILE_SELECTOR_TEXT,
   FileSelectorComponent,
@@ -50,7 +51,7 @@ export default meta;
 export const FileSelector: Story = {};
 
 export const FileSelectorTests: Story = {
-  play: async ({ canvasElement, step, args }) => {
+  play: async ({ canvasElement, step }) => {
     await step('2 files', async () => {
       await filesSelectHandler(canvasElement);
       await filesDropHandler(canvasElement);

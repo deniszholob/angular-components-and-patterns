@@ -1,11 +1,12 @@
+import { Router } from '@angular/router';
 import {
   applicationConfig,
   Meta,
   moduleMetadata,
   StoryObj,
 } from '@storybook/angular';
+
 import { AppComponent } from './app.component';
-import { Router } from '@angular/router';
 import { MOCK_Router } from './core';
 import {
   MOCK_APP_BUILD_DATE_Token,

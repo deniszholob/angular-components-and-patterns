@@ -3,8 +3,8 @@ import { Meta, StoryObj } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
 
 import { ProgressBarComponent } from './progress-bar.component';
-import { MOCK_ProgressBar } from './progress-bar.model.mock';
 import { ProgressBar as ProgressBarModel } from './progress-bar.model';
+import { MOCK_ProgressBar } from './progress-bar.model.mock';
 
 type ComponentWithCustomControls = ProgressBarComponent & ProgressBarModel;
 

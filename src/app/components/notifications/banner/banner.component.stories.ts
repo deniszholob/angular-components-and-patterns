@@ -2,10 +2,10 @@
 import { Meta, StoryObj } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
 
-import { BannerComponent } from './banner.component';
-import { NotificationType } from '../notification-type.enum';
-import { MOCK_Notification } from '../notification.model.mock';
 import { Notification } from '../notification.model';
+import { MOCK_Notification } from '../notification.model.mock';
+import { NotificationType } from '../notification-type.enum';
+import { BannerComponent } from './banner.component';
 
 type ComponentWithCustomControls = BannerComponent & Notification;
 

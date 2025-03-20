@@ -4,7 +4,6 @@ import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
 
 import { NavComponent } from './nav.component';
 import { MOCK_Nav } from './nav.model.mock';
-import { Nav as NavModel } from './nav.model';
 
 type ComponentWithCustomControls = NavComponent;
 

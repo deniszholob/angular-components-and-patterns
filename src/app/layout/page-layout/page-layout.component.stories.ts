@@ -1,4 +1,5 @@
 // @ref https://storybook.js.org/docs/writing-stories
+import { Router } from '@angular/router';
 import {
   applicationConfig,
   Meta,
@@ -6,14 +7,13 @@ import {
   StoryObj,
 } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
+import { MOCK_Router } from 'src/app/core';
 
-import { PageLayoutComponent } from './page-layout.component';
 import {
   MOCK_APP_BUILD_DATE_Token,
   MOCK_APP_BUILD_VERSION_Token,
 } from '../footer/footer-tokens.mock';
-import { RouterModule, Router } from '@angular/router';
-import { MOCK_Router } from 'src/app/core';
+import { PageLayoutComponent } from './page-layout.component';
 
 type ComponentWithCustomControls = PageLayoutComponent; // & {};
 

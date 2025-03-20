@@ -3,8 +3,8 @@ import { Meta, StoryObj } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
 
 import { LinkComponent } from './link.component';
-import { MOCK_Link } from './link.model.mock';
 import { Link as LinkModel } from './link.model';
+import { MOCK_Link } from './link.model.mock';
 
 type ComponentWithCustomControls = LinkComponent & LinkModel;
 
