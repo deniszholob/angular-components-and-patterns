@@ -1,8 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { AppErrorHandlerModule } from './app-error-handler/app-error-handler.module';
+
 @NgModule({
-  imports: [CommonModule],
-  exports: [],
+  imports: [],
+  exports: [AppErrorHandlerModule],
 })
 export class AppErrorsModule {}

@@ -4,7 +4,7 @@ const DEFAULT_APP_ERROR_DATA: AppErrorData = {
   title: 'App Error',
   description: 'A wild error has appeared.',
   recommendedAction: `Have you tired turning it off and on again?
-  If so, please report to https://github.com/deniszholob/template-nx-project/issues`,
+  If so, please report to https://github.com/deniszholob/angular-components-and-patterns/issues`,
 };
 
 /**
