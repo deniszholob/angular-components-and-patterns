@@ -18,6 +18,18 @@ export function isObjectEmpty<T>(obj: T): boolean {
   return true;
 }
 
+/**
+ * Deep copy simple objects, for more complex object with circular references , getters/setters and other non json serializable objects use _.cloneDeep
+ *  @see https://stackoverflow.com/questions/48494350/what-are-the-dangers-of-deep-copying-objects-using-json-parsejson-stringifyobj
+ */
+export function simpleDeepCopyObject<T>(obj: T): T {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+export function wholeObjectComparator<T>(a: T, b: T): boolean {
+  return JSON.stringify(a) === JSON.stringify(b);
+}
+
 export function doKeysMatchObject<T>(
   obj: Record<string, T>,
   keys: string[],
