@@ -7,7 +7,7 @@ export interface ToastInfo extends INotification {
 }
 
 export interface Toast extends ToastInfo {
-  id: number;
+  id: string;
   percentage?: number;
   created: number;
 }

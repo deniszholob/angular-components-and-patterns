@@ -16,7 +16,7 @@ export class ToastContainerComponent {
   public toasts: Toast[] = [];
 
   @Output()
-  public removeToast: EventEmitter<number> = new EventEmitter<number>();
+  public removeToast: EventEmitter<string> = new EventEmitter<string>();
 
   @Output()
   public hover: EventEmitter<ToastHoverEvent> =

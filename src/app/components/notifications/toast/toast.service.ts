@@ -16,29 +16,71 @@ export class ToastService {
   private toastContainerRef?: ComponentRef<ToastContainerComponent>;
 
   private toasts: Toast[] = [];
-  private intervals: Record<number, number> = {};
-  private toastRemovedSignal = new Subject<number>(); // Subject to emit when a toast is removed
+  private intervals: Record<string, number> = {};
+  private toastRemovedSignal = new Subject<string>(); // Subject to emit when a toast is removed
 
   constructor(private injector: Injector) {}
 
-  private ensureToastContainer(): void {
+  public showToast(toastInfo: ToastInfo): Observable<void> {
+    const startTime = Date.now();
+    const uuid = self.crypto.randomUUID();
+    const toast: Toast = {
+      ...toastInfo,
+      id: uuid,
+      percentage: 100,
+      created: startTime,
+    };
+
+    const existingToasts: Toast[] = this.toasts.filter(
+      (t: Toast): boolean => t.id === toast.id,
+    );
+    if (existingToasts.length > 0) {
+      toast.id = `${toast.id}_${existingToasts.length}`;
+    }
+
+    if (toast.duration) this.startToastTimer(toast, toast.duration);
+
+    this.addToast(toast);
+    this.ensureToastContainer(this.toasts);
+
+    // Return an observable that emits when the toast is removed
+    return new Observable<void>((observer) => {
+      this.toastRemovedSignal
+        .pipe(
+          filter((id: string): boolean => id === toast.id),
+          take(1),
+        )
+        .subscribe(() => {
+          observer.next();
+          observer.complete();
+        });
+    });
+  }
+
+  /** Make sure to add component to the DOM */
+  private ensureToastContainer(toasts: Toast[]): void {
     // cannot use inject(ApplicationRef) nor  constructor(private appRef: ApplicationRef)
     // @see https://kingtigerebooks.co.uk/post/circular-dependency-in-di-detected-for-application-ref-how
-    const appRef = this.injector.get(ApplicationRef);
+    const appRef: ApplicationRef = this.injector.get(ApplicationRef);
     if (this.toastContainerRef) return;
     this.toastContainerRef = createComponent(ToastContainerComponent, {
       environmentInjector: appRef.injector,
     });
     appRef.attachView(this.toastContainerRef.hostView);
     document.body.appendChild(this.toastContainerRef.location.nativeElement);
-    this.initTostContainer(this.toastContainerRef.instance);
+    this.initTostContainer(this.toastContainerRef, toasts);
   }
 
-  private initTostContainer(componentInstance: ToastContainerComponent): void {
-    componentInstance.toasts = this.toasts;
+  /** Set component inputs/outputs */
+  private initTostContainer(
+    componentRef: ComponentRef<ToastContainerComponent>,
+    toasts: Toast[],
+  ): void {
+    const componentInstance: ToastContainerComponent = componentRef.instance;
+    componentInstance.toasts = toasts;
 
     componentInstance.hover.subscribe((event: ToastHoverEvent): void => {
-      const toast: Toast | undefined = this.toasts.find(
+      const toast: Toast | undefined = toasts.find(
         (t: Toast): boolean => t.id === event.id,
       );
       if (!toast || !toast.duration) return;
@@ -51,36 +93,8 @@ export class ToastService {
       }
     });
 
-    componentInstance.removeToast.subscribe((id: number): void => {
+    componentInstance.removeToast.subscribe((id: string): void => {
       this.removeToast(id);
-    });
-  }
-
-  public showToast(toastInfo: ToastInfo): Observable<void> {
-    const startTime = Date.now();
-    const toast: Toast = {
-      ...toastInfo,
-      id: startTime,
-      percentage: 100,
-      created: startTime,
-    };
-
-    if (toast.duration) this.startToastTimer(toast, toast.duration);
-
-    this.addToast(toast);
-    this.ensureToastContainer();
-
-    // Return an observable that emits when the toast is removed
-    return new Observable<void>((observer) => {
-      this.toastRemovedSignal
-        .pipe(
-          filter((id: number): boolean => id === toast.id),
-          take(1),
-        )
-        .subscribe(() => {
-          observer.next();
-          observer.complete();
-        });
     });
   }
 
@@ -101,7 +115,7 @@ export class ToastService {
     this.intervals[toast.id] = interval;
   }
 
-  private stopToastTimer(id: number): void {
+  private stopToastTimer(id: string): void {
     const interval: number | undefined = this.intervals[id];
     clearInterval(interval);
     delete this.intervals[id];
@@ -111,7 +125,7 @@ export class ToastService {
     this.toasts.push(toast);
   }
 
-  private removeToast(id: number): void {
+  private removeToast(id: string): void {
     this.stopToastTimer(id);
     this.toasts.splice(
       this.toasts.findIndex((toast) => toast.id === id),

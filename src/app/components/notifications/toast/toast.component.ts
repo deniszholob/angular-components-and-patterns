@@ -14,7 +14,7 @@ import { NotificationType } from '../notification-type.enum';
 import { Toast } from './toast.model';
 
 export interface ToastHoverEvent {
-  id: number;
+  id: string;
   hover: boolean;
 }
 
@@ -28,7 +28,7 @@ export interface ToastHoverEvent {
 export class ToastComponent {
   protected readonly NotificationType = NotificationType;
   public $toast: InputSignal<Toast> = input.required<Toast>();
-  public removeToast: OutputEmitterRef<number> = output<number>();
+  public removeToast: OutputEmitterRef<string> = output<string>();
   public hover: OutputEmitterRef<ToastHoverEvent> = output<ToastHoverEvent>();
 
   @HostListener('mouseenter')

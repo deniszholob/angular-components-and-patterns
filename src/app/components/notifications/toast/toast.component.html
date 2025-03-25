@@ -37,7 +37,12 @@
     </div>
 
     <div class="flex">
-      <button class="p-2 hover:text-red-600" (click)="removeToast.emit(toast.id)">
+      <button
+        class="p-2 hover:text-red-600"
+        (click)="removeToast.emit(toast.id)"
+        aria-label="Close"
+        title="Close"
+      >
         <!-- × -->
         <i class="fa-solid fa-fw fa-xmark"></i>
       </button>

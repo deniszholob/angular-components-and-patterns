@@ -21,7 +21,7 @@ import { Toast } from './toast.model';
 export function createMock_Toast(): Toast {
   const created = faker.date.recent().getTime();
   return {
-    id: created,
+    id: faker.string.uuid(),
     type: faker.helpers.enumValue(NotificationType),
     text: faker.lorem.sentence(),
     title: faker.lorem.words(),
