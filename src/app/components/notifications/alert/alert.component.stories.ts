@@ -1,6 +1,8 @@
 // @ref https://storybook.js.org/docs/writing-stories
-import { Meta, StoryObj } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
+import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
+import { AppErrorsModule } from 'src/app/core';
 
 import { Notification } from '../notification.model';
 import { MOCK_Notification } from '../notification.model.mock';
@@ -12,7 +14,9 @@ type ComponentWithCustomControls = AlertComponent & Notification;
 const meta: Meta<ComponentWithCustomControls> = {
   title: 'Components/Notifications/Alert',
   component: AlertComponent,
-  // decorators: [moduleMetadata({ imports: [] }), applicationConfig({ providers: [ importProvidersFrom() ]})],
+  decorators: [
+    applicationConfig({ providers: [importProvidersFrom(AppErrorsModule)] }),
+  ],
   parameters: {
     docs: { description: { component: `Alert` } },
     // layout: 'fullscreen',

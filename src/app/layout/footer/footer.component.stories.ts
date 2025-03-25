@@ -1,6 +1,8 @@
 // @ref https://storybook.js.org/docs/writing-stories
+import { importProvidersFrom } from '@angular/core';
 import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
+import { AppErrorsModule } from 'src/app/core';
 
 import { FooterComponent } from './footer.component';
 import {
@@ -17,9 +19,9 @@ const meta: Meta<ComponentWithCustomControls> = {
     // moduleMetadata({ imports: [] }),
     applicationConfig({
       providers: [
+        importProvidersFrom(AppErrorsModule),
         MOCK_APP_BUILD_DATE_Token,
         MOCK_APP_BUILD_VERSION_Token,
-        // importProvidersFrom()
       ],
     }),
   ],

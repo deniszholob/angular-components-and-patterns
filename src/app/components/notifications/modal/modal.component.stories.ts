@@ -1,6 +1,8 @@
 // @ref https://storybook.js.org/docs/writing-stories
-import { Meta, StoryObj } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
+import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
+import { AppErrorsModule } from 'src/app/core';
 
 import { ModalComponent } from './modal.component';
 // import { MOCK_Modal } from './modal.model.mock';
@@ -11,7 +13,9 @@ type ComponentWithCustomControls = ModalComponent; // & ModalModel;
 const meta: Meta<ComponentWithCustomControls> = {
   title: 'Components/Notifications/Modal',
   component: ModalComponent,
-  // decorators: [moduleMetadata({ imports: [] }), applicationConfig({ providers: [ importProvidersFrom() ]})],
+  decorators: [
+    applicationConfig({ providers: [importProvidersFrom(AppErrorsModule)] }),
+  ],
   parameters: {
     docs: { description: { component: `Modal` } },
     // layout: 'fullscreen',

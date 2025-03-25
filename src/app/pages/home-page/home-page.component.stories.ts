@@ -1,6 +1,8 @@
 // @ref https://storybook.js.org/docs/writing-stories
-import { Meta, StoryObj } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
+import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
+import { AppErrorsModule } from 'src/app/core';
 
 import { HomePageComponent } from './home-page.component';
 
@@ -9,7 +11,9 @@ type ComponentWithCustomControls = HomePageComponent;
 const meta: Meta<ComponentWithCustomControls> = {
   title: 'Pages/Home Page',
   component: HomePageComponent,
-  // decorators: [moduleMetadata({ imports: [] }), applicationConfig({ providers: [ importProvidersFrom() ]})],
+  decorators: [
+    applicationConfig({ providers: [importProvidersFrom(AppErrorsModule)] }),
+  ],
   parameters: {
     docs: { description: { component: `HomePage` } },
     // layout: 'fullscreen',

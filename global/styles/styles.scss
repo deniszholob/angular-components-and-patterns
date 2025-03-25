@@ -73,11 +73,11 @@
   }
 
   .btn-primary {
-    @apply bg-blue-500 text-white hover:bg-blue-600 hover:disabled:bg-blue-500;
+    @apply bg-blue-700 text-white hover:bg-blue-600 hover:disabled:bg-blue-500;
   }
 
   .btn-secondary {
-    @apply border-blue-500 text-white hover:bg-blue-600 hover:disabled:bg-blue-500;
+    @apply border-blue-700 text-white hover:bg-blue-600 hover:disabled:bg-blue-500;
   }
 
   .btn-tertiary {

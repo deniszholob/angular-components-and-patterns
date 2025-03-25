@@ -1,7 +1,7 @@
 // @ref https://storybook.js.org/docs/writing-stories
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { Meta, moduleMetadata, StoryObj } from '@storybook/angular';
+import { Component, importProvidersFrom, Input } from '@angular/core';
+import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
 import {
   NgTemplateContextImplicit,
   NgTemplateTypedDirective,
@@ -110,8 +110,7 @@ const meta: Meta<ComponentWithCustomControls> = {
   title: 'Core/Error Handler Demo',
   component: ErrorHandlerDemoComponent,
   decorators: [
-    moduleMetadata({ imports: [AppErrorsModule] }),
-    // applicationConfig({ providers: [ importProvidersFrom(AppErrorsModule) ]})
+    applicationConfig({ providers: [importProvidersFrom(AppErrorsModule)] }),
   ],
   parameters: {
     docs: { description: { component: `ErrorHandlerDemoComponent` } },

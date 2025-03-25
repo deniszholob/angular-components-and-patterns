@@ -70,7 +70,6 @@ export class FileDropDirective {
       .pipe(
         take(1),
         tap((selectedFiles: FileSelection[]): void => {
-          console.log('Files selected from drop:', selectedFiles);
           this.filesSelected.emit(selectedFiles);
           this.cdr.detectChanges();
         }),

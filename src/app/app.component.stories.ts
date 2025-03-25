@@ -1,3 +1,4 @@
+import { importProvidersFrom } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   applicationConfig,
@@ -7,7 +8,7 @@ import {
 } from '@storybook/angular';
 
 import { AppComponent } from './app.component';
-import { MOCK_Router } from './core';
+import { AppErrorsModule, MOCK_Router } from './core';
 import {
   MOCK_APP_BUILD_DATE_Token,
   MOCK_APP_BUILD_VERSION_Token,
@@ -25,9 +26,9 @@ const meta: Meta<ComponentWithCustomControls> = {
     }),
     applicationConfig({
       providers: [
+        importProvidersFrom(AppErrorsModule),
         MOCK_APP_BUILD_DATE_Token,
         MOCK_APP_BUILD_VERSION_Token,
-        // importProvidersFrom()
       ],
     }),
   ],

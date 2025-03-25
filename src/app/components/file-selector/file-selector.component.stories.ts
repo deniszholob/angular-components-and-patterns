@@ -1,5 +1,7 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
+import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
 import { fireEvent, userEvent } from '@storybook/test';
+import { AppErrorsModule } from 'src/app/core';
 import {
   createMockDataTransfer,
   createMockDragEvent,
@@ -32,7 +34,9 @@ type Story = StoryObj<ComponentWithCustomControls>;
 const meta: Meta<ComponentWithCustomControls> = {
   title: 'Components/File Selector',
   component: FileSelectorComponent,
-  // decorators: [moduleMetadata({ imports: [] }), applicationConfig({ providers: [ importProvidersFrom() ]})],
+  decorators: [
+    applicationConfig({ providers: [importProvidersFrom(AppErrorsModule)] }),
+  ],
   parameters: {
     docs: { description: { component: `FileSelector` } },
   },

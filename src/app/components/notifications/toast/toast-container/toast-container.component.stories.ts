@@ -1,6 +1,8 @@
 // @ref https://storybook.js.org/docs/writing-stories
-import { Meta, StoryObj } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
+import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
+import { AppErrorsModule } from 'src/app/core';
 
 import { MOCK_Toast_Array } from '../toast.model.mock';
 import { ToastContainerComponent } from './toast-container.component';
@@ -10,7 +12,9 @@ type ComponentWithCustomControls = ToastContainerComponent;
 const meta: Meta<ComponentWithCustomControls> = {
   title: 'Components/Notifications/Toast/Toast Container',
   component: ToastContainerComponent,
-  // decorators: [moduleMetadata({ imports: [] }), applicationConfig({ providers: [ importProvidersFrom() ]})],
+  decorators: [
+    applicationConfig({ providers: [importProvidersFrom(AppErrorsModule)] }),
+  ],
   parameters: {
     docs: { description: { component: `ToastContainer` } },
     layout: 'fullscreen',

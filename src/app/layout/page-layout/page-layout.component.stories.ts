@@ -1,4 +1,5 @@
 // @ref https://storybook.js.org/docs/writing-stories
+import { importProvidersFrom } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   applicationConfig,
@@ -7,7 +8,7 @@ import {
   StoryObj,
 } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
-import { MOCK_Router } from 'src/app/core';
+import { AppErrorsModule, MOCK_Router } from 'src/app/core';
 
 import {
   MOCK_APP_BUILD_DATE_Token,
@@ -27,9 +28,9 @@ const meta: Meta<ComponentWithCustomControls> = {
     }),
     applicationConfig({
       providers: [
+        importProvidersFrom(AppErrorsModule),
         MOCK_APP_BUILD_DATE_Token,
         MOCK_APP_BUILD_VERSION_Token,
-        // importProvidersFrom()
       ],
     }),
   ],

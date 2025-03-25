@@ -1,6 +1,8 @@
 // @ref https://storybook.js.org/docs/writing-stories
-import { Meta, StoryObj } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
+import { applicationConfig, Meta, StoryObj } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
+import { AppErrorsModule } from 'src/app/core';
 
 import { LinkComponent } from './link.component';
 import { Link as LinkModel } from './link.model';
@@ -11,7 +13,9 @@ type ComponentWithCustomControls = LinkComponent & LinkModel;
 const meta: Meta<ComponentWithCustomControls> = {
   title: 'Components/Link',
   component: LinkComponent,
-  // decorators: [moduleMetadata({ imports: [] }), applicationConfig({ providers: [ importProvidersFrom() ]})],
+  decorators: [
+    applicationConfig({ providers: [importProvidersFrom(AppErrorsModule)] }),
+  ],
   parameters: {
     docs: { description: { component: `Link` } },
     layout: 'centered',
