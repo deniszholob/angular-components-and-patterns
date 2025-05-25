@@ -1,7 +1,21 @@
 #!/usr/bin/env sh
+# Use the system's environment to find and run the sh shell
+
 export NVM_DIR="$HOME/.nvm"
+# Set the NVM_DIR environment variable to where NVM is installed (usually ~/.nvm)
+
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+# If the nvm.sh script exists and is not empty, source it (run it in the current shell)
+# This makes NVM and the correct Node.js version available in this shell session
 
 . "$(dirname -- "$0")/_/husky.sh"
+# Source Husky's helper script (run it in the current shell) to set up Git hook context
 
 npm run pre-commit
+# Run the "pre-commit" npm script as defined in your package.json
+
+
+# In shell scripting, source (or just .) means:
+# "Run the commands in this file in the current shell environment."
+# If you run a script like ./somefile.sh, it executes in a new subshell, and changes like setting environment variables won't affect your current shell.
+# If you source a script (e.g., . ./somefile.sh), the script runs in your current shell, so any variables, functions, or changes it makes stay available after it runs.

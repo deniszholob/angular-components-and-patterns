@@ -3,6 +3,7 @@ export function toTitleCase(input: string): string {
   return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
 }
 
+/** ex: My wonderful component */
 export function camelCaseToTitleWords(input: string): string {
   const words: string = input.replace(/([A-Z])/g, ' $1');
   return toTitleCase(words);
