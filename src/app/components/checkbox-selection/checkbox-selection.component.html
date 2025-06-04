@@ -8,11 +8,11 @@
  -->
   <app-checkbox
     [id]="'checkbox-toggle-all'"
-    [checked]="allChecked"
-    [indeterminate]="someChecked && !allChecked"
-    (checkedChange)="onCheckboxToggleAll($event)"
+    [checked]="checkboxSelection.allChecked"
+    [indeterminate]="checkboxSelection.someChecked && !checkboxSelection.allChecked"
+    (checkedChange)="onCheckboxToggleAll()"
   >
-    {{ allNextValue ? 'Select' : 'Deselect' }} All
+    {{ checkboxSelection.allNextValue ? 'Select' : 'Deselect' }} All
   </app-checkbox>
 
   <div class="flex flex-col gap-4">

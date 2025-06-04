@@ -1,14 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+} from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { CheckboxComponent } from 'src/app/forms/checkbox/checkbox.component';
 import {
   Checkbox,
   CheckboxSection,
 } from 'src/app/forms/checkbox/checkbox.model';
-import {
-  areAllChecked,
-  areSomeChecked,
-} from 'src/app/forms/checkbox/checkbox.util';
+
+import { CheckboxSelection } from './checkbox-selection.class';
 
 @Component({
   selector: 'app-checkbox-selection',
@@ -16,61 +21,54 @@ import {
   host: { class: 'contents' },
   imports: [CommonModule, CheckboxComponent],
 })
-export class CheckboxSelectionComponent {
-  private _sections: CheckboxSection[] = [];
+export class CheckboxSelectionComponent<T = undefined> implements OnDestroy {
+  private readonly clearSub$: Subject<void> = new Subject<void>();
+
+  private _sections: CheckboxSection<T>[] = [];
   @Input()
-  public set sections(sections: CheckboxSection[]) {
+  public set sections(sections: CheckboxSection<T>[]) {
     this._sections = sections;
 
-    this.updateStates();
-    this.allNextValue = !this.allChecked;
+    this.checkboxSelection.setSections(sections);
   }
-  public get sections(): CheckboxSection[] {
+  public get sections(): CheckboxSection<T>[] {
     return this._sections;
   }
 
   @Output()
-  public sectionsChange: EventEmitter<CheckboxSection[]> = new EventEmitter<
-    CheckboxSection[]
+  public sectionsChange: EventEmitter<CheckboxSection<T>[]> = new EventEmitter<
+    CheckboxSection<T>[]
   >();
   @Output()
-  public itemsChange: EventEmitter<Checkbox[]> = new EventEmitter<Checkbox[]>();
+  public itemsChange: EventEmitter<Checkbox<T>[]> = new EventEmitter<
+    Checkbox<T>[]
+  >();
 
-  protected allChecked: boolean = areAllChecked(this.sections);
-  protected someChecked: boolean = areSomeChecked(this.sections);
-  protected allNextValue: boolean = !this.allChecked;
-
-  protected onCheckboxToggleAll(check?: boolean): void {
-    // this.allNextValue = check != null ? check : !this.allChecked;
-    // this.allNextValue = !this.allChecked;
-    const changedItems: Checkbox[] = [];
-
-    this.sections.forEach((section: CheckboxSection) => {
-      section.items
-        .filter((item) => !item.disabled)
-        .forEach((item) => {
-          const prev: boolean = item.checked;
-          item.checked = this.allNextValue;
-          if (prev !== item.checked) changedItems.push(item);
-        });
-    });
-    this.allNextValue = !this.allNextValue;
-
-    this.itemsChange.emit(changedItems);
-    this.updateStates();
+  constructor() {
+    this.checkboxSelection.itemsChange$
+      .pipe(takeUntil(this.clearSub$))
+      .subscribe((items) => {
+        this.itemsChange.emit(items);
+      });
+    this.checkboxSelection.sectionsChange$
+      .pipe(takeUntil(this.clearSub$))
+      .subscribe((sections) => {
+        this.sectionsChange.emit(sections);
+      });
+  }
+  public ngOnDestroy(): void {
+    this.clearSub$.next();
+    this.clearSub$.complete();
   }
 
-  protected onCheckboxToggle(item: Checkbox): void {
-    item.checked = !item.checked;
+  protected checkboxSelection: CheckboxSelection<T> = new CheckboxSelection(
+    this._sections,
+  );
 
-    this.itemsChange.emit([item]);
-    this.updateStates();
+  protected onCheckboxToggleAll(): void {
+    this.checkboxSelection.setAll();
   }
-
-  private updateStates(): void {
-    this.allChecked = areAllChecked(this.sections);
-    this.someChecked = areSomeChecked(this.sections);
-
-    this.sectionsChange.emit(this.sections);
+  protected onCheckboxToggle(item: Checkbox<T>): void {
+    this.checkboxSelection.toggleItem(item);
   }
 }

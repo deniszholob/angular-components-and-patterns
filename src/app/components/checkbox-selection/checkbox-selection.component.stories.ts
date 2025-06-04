@@ -1,6 +1,7 @@
 // @ref https://storybook.js.org/docs/writing-stories
 import { Meta, StoryObj } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
+import { MOCK_CheckboxSectionList } from 'src/app/forms/checkbox/checkbox.model.mock';
 
 import { CheckboxSelectionComponent } from './checkbox-selection.component';
 
@@ -26,24 +27,7 @@ const meta: Meta<ComponentWithCustomControls> = {
     // someControl: { control: { disable: true } }
   },
   args: {
-    sections: [
-      {
-        display: 'Section 1',
-        items: [
-          { id: '1_1', display: 'Item 1', checked: false },
-          { id: '1_2', display: 'Item 2', checked: false, disabled: false },
-          { id: '1_3', display: 'Item 3', checked: false },
-        ],
-      },
-      {
-        display: 'Section 2',
-        items: [
-          { id: '2_1', display: 'Item 1', checked: false },
-          { id: '2_2', display: 'Item 2', checked: false },
-          { id: '2_3', display: 'Item 3', checked: false },
-        ],
-      },
-    ],
+    sections: [...MOCK_CheckboxSectionList],
   },
 };
 export default meta;
