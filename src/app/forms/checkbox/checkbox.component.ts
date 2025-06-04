@@ -16,10 +16,13 @@ import { Checkbox } from './checkbox.model';
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
   // styles: [':host{display:contents}'], // Makes component host as if it was not there, can offer less css headaches. Use @HostBinding class approach for easier overrides.
-  // host: { class: 'contents' },
+  host: { class: 'contents' },
   imports: [CommonModule],
 })
 export class CheckboxComponent implements Checkbox {
+  // Not used but required in model
+  public readonly data = undefined;
+
   @Input()
   public id: string = '';
   @Input({ required: true })

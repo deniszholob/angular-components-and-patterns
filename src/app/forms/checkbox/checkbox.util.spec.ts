@@ -1,4 +1,7 @@
-import { CheckboxSection } from './checkbox.model';
+import {
+  CheckboxSection,
+  createMockCheckboxSectionsFromBooleans,
+} from './checkbox.model';
 import { areAllChecked, areSomeChecked } from './checkbox.util';
 
 // File Level Tests
@@ -6,52 +9,40 @@ describe('Checkbox Utilities', () => {
   // Function level tests
   describe('areAllChecked', () => {
     it('should return true when all items in all sections are checked', () => {
-      const sections: CheckboxSection[] = [
-        getMockSection([true, true]),
-        getMockSection([true]),
-      ];
+      const sections: CheckboxSection[] =
+        createMockCheckboxSectionsFromBooleans([[true, true], [true]]);
       expect(areAllChecked(sections)).toBe(true);
     });
 
     it('should return false when any item is not checked', () => {
-      const sections: CheckboxSection[] = [
-        getMockSection([true, false]),
-        getMockSection([true]),
-      ];
+      const sections: CheckboxSection[] =
+        createMockCheckboxSectionsFromBooleans([[true, false], [true]]);
       expect(areAllChecked(sections)).toBe(false);
     });
     it('should return false when all items are not checked', () => {
-      const sections: CheckboxSection[] = [
-        getMockSection([false, false]),
-        getMockSection([false]),
-      ];
+      const sections: CheckboxSection[] =
+        createMockCheckboxSectionsFromBooleans([[false, false], [false]]);
       expect(areAllChecked(sections)).toBe(false);
     });
   });
 
   describe('areSomeChecked', () => {
     it('should return true when some items are checked', () => {
-      const sections: CheckboxSection[] = [
-        getMockSection([false, false]),
-        getMockSection([true]),
-      ];
+      const sections: CheckboxSection[] =
+        createMockCheckboxSectionsFromBooleans([[false, false], [true]]);
       expect(areSomeChecked(sections)).toBe(true);
     });
 
     it('should return false when no items are checked', () => {
-      const sections: CheckboxSection[] = [
-        getMockSection([false, false]),
-        getMockSection([false]),
-      ];
+      const sections: CheckboxSection[] =
+        createMockCheckboxSectionsFromBooleans([[false, false], [false]]);
       expect(areSomeChecked(sections)).toBe(false);
     });
 
-    it('should return false when all items are checked', () => {
-      const sections: CheckboxSection[] = [
-        getMockSection([true, true]),
-        getMockSection([true]),
-      ];
-      expect(areSomeChecked(sections)).toBe(false);
+    it('should return true when all items are checked', () => {
+      const sections: CheckboxSection[] =
+        createMockCheckboxSectionsFromBooleans([[true, true], [true]]);
+      expect(areSomeChecked(sections)).toBe(true);
     });
 
     it('should return false when all sections are empty', () => {
@@ -60,7 +51,8 @@ describe('Checkbox Utilities', () => {
     });
 
     it('should return true when some items are checked in one section', () => {
-      const sections: CheckboxSection[] = [getMockSection([true, false])];
+      const sections: CheckboxSection[] =
+        createMockCheckboxSectionsFromBooleans([[true, false]]);
       expect(areSomeChecked(sections)).toBe(true);
     });
   });
@@ -73,24 +65,10 @@ describe('Checkbox Utilities', () => {
     });
 
     it('should handle section with empty items', () => {
-      const sections: CheckboxSection[] = [
-        { items: [], display: '' },
-        getMockSection([true]),
-      ];
+      const sections: CheckboxSection[] =
+        createMockCheckboxSectionsFromBooleans([[], [true]]);
       expect(areAllChecked(sections)).toBe(true); // vacuously true for empty items
       expect(areSomeChecked(sections)).toBe(true);
     });
   });
 });
-
-function getMockSection(checks: boolean[]): CheckboxSection {
-  return {
-    display: '',
-    items: checks.map((checked) => ({
-      checked,
-      disabled: false,
-      display: '',
-      id: '',
-    })),
-  };
-}

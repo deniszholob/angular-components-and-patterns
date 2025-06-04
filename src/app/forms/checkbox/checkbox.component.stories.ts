@@ -3,6 +3,7 @@ import { Meta, StoryObj } from '@storybook/angular';
 import { StoryFnAngularReturnType } from '@storybook/angular/dist/client/types';
 
 import { CheckboxComponent } from './checkbox.component';
+import { MOCK_Checkbox } from './checkbox.model.mock';
 
 type ComponentWithCustomControls = CheckboxComponent; // & {};
 
@@ -29,10 +30,7 @@ const meta: Meta<ComponentWithCustomControls> = {
     // someControl: { control: { disable: true } }
   },
   args: {
-    display: 'Checkbox',
-    checked: false,
-    indeterminate: false,
-    disabled: false,
+    ...MOCK_Checkbox,
   },
 };
 export default meta;
