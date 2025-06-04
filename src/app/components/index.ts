@@ -8,3 +8,4 @@ export * from './file-selector';
 export * from './link';
 export * from './notifications';
 export * from './progress-bar';
+export * from './theme-toggle/theme-toggle.component';
