@@ -128,27 +128,28 @@ describe('CheckboxSelection', () => {
       sections = [createMockCheckboxSection([checkbox1, checkbox2, checkbox3])];
       model = new CheckboxSelection(sections);
       expect(model.someChecked).toBe(true);
+      expect(model.allChecked).toBe(true); // ignoring disabled otherwise false
+      expect(model.allNextValue).toBe(false); // ignoring disabled otherwise true
+
+      model.setAll(); // apply _allNextValue
+      expect(checkbox1.checked).toBe(false);
+      expect(checkbox2.checked).toBe(false);
+      expect(checkbox3.checked).toBe(false);
+      expect(model.someChecked).toBe(false);
       expect(model.allChecked).toBe(false);
       expect(model.allNextValue).toBe(true);
 
-      model.setAll(); // apply _allNextValue = true → sets checkbox1 & 2 = true
-      expect(checkbox1.checked).toBe(true);
-      expect(checkbox2.checked).toBe(true);
-      expect(checkbox3.checked).toBe(false);
-      expect(model.allChecked).toBe(false);
-      expect(model.someChecked).toBe(true);
-
       model.toggleItem(checkbox1); // flip one to false
-      expect(checkbox1.checked).toBe(false);
+      expect(checkbox1.checked).toBe(true);
       expect(model.allChecked).toBe(false);
       expect(model.someChecked).toBe(true);
 
       model.setAll(); // apply _allNextValue = false → sets checkbox1 & 2 = false
-      expect(checkbox1.checked).toBe(false);
-      expect(checkbox2.checked).toBe(false);
+      expect(checkbox1.checked).toBe(true);
+      expect(checkbox2.checked).toBe(true);
       expect(checkbox3.checked).toBe(false); // stays the same
-      expect(model.allChecked).toBe(false);
-      expect(model.someChecked).toBe(false);
+      expect(model.allChecked).toBe(true); // ignoring disabled otherwise true
+      expect(model.someChecked).toBe(true);
     });
 
     it('with no starting disabled items (mixed)', () => {

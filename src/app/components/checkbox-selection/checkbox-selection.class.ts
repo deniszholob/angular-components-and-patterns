@@ -5,22 +5,34 @@ import {
 } from 'src/app/forms/checkbox/checkbox.model';
 import {
   areAllChecked,
+  areAllNotChecked,
   areSomeChecked,
+  areSomeNotChecked,
 } from 'src/app/forms/checkbox/checkbox.util';
 
 /** Mutable model for checkbox selection */
 export class CheckboxSelection<T = undefined> {
+  private _someChecked: boolean = areSomeChecked(this.sections);
+  public get someChecked(): boolean {
+    return this._someChecked;
+  }
+  private _someNotChecked: boolean = areSomeNotChecked(this.sections);
+  public get someNotChecked(): boolean {
+    return this._someNotChecked;
+  }
+
   private _allChecked: boolean = areAllChecked(this.sections);
   public get allChecked(): boolean {
     return this._allChecked;
   }
 
-  private _someChecked: boolean = areSomeChecked(this.sections);
-  public get someChecked(): boolean {
-    return this._someChecked;
+  private _allNotChecked: boolean = areAllNotChecked(this.sections);
+  public get allNotChecked(): boolean {
+    return this._allNotChecked;
   }
 
   private _allNextValue: boolean = !this._allChecked;
+  /** True: Select All; False: Deselect All */
   public get allNextValue(): boolean {
     return this._allNextValue;
   }
@@ -47,8 +59,16 @@ export class CheckboxSelection<T = undefined> {
   }
 
   private updateStates(): void {
-    this._allChecked = areAllChecked(this.sections);
     this._someChecked = areSomeChecked(this.sections);
+    this._someNotChecked = areSomeNotChecked(this.sections);
+    this._allChecked = areAllChecked(this.sections);
+    this._allNotChecked = areAllNotChecked(this.sections);
+
+    if (this._allChecked) {
+      this._allNextValue = false;
+    } else if (this._allNotChecked) {
+      this._allNextValue = true;
+    }
 
     this.sectionsChange.next(this.sections);
   }
