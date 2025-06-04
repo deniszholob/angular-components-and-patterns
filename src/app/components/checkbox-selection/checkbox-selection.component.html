@@ -1,0 +1,37 @@
+<div class="flex flex-col gap-4">
+  <!-- 
+  <pre>
+    allChecked {{ allChecked }}
+    someChecked {{ someChecked }}
+    allNextValue {{ allNextValue }}
+  </pre>
+ -->
+  <app-checkbox
+    [id]="'checkbox-toggle-all'"
+    [checked]="allChecked"
+    [indeterminate]="someChecked && !allChecked"
+    (checkedChange)="onCheckboxToggleAll($event)"
+  >
+    {{ allNextValue ? 'Select' : 'Deselect' }} All
+  </app-checkbox>
+
+  <div class="flex flex-col gap-4">
+    @for (section of sections; track $index) {
+      <div class="flex flex-col gap-2">
+        <span class="font-bold">{{ section.display }}</span>
+        <div class="gapx-10 flex grid-cols-2 flex-col gap-2 sm:grid lg:grid-cols-3">
+          @for (item of section.items; track $index) {
+            <app-checkbox
+              [id]="'checkbox-' + item.id"
+              [checked]="item.checked"
+              [disabled]="!!item.disabled"
+              (checkedChange)="onCheckboxToggle(item)"
+            >
+              {{ item.display }}
+            </app-checkbox>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>
