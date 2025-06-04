@@ -2,7 +2,11 @@
 
 <nav class="flex flex-row flex-wrap items-baseline">
   @for (link of navLinks; track $index) {
-    <a class="link px-2 py-1 text-lg" [routerLink]="[link.url]" [routerLinkActive]="'font-bold'">
+    <a
+      class="link px-2 py-1 text-lg"
+      [routerLink]="[link.url]"
+      [routerLinkActive]="'border-b border-gray-600'"
+    >
       {{ link.display }}
       @if (link.note) {
         <small> ({{ link.note }})</small>
