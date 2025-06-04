@@ -1,0 +1,28 @@
+<label
+  class="inline-flex cursor-pointer select-none items-center gap-2"
+  [class.opacity-50]="disabled"
+>
+  <input
+    class="h-5 w-5 cursor-pointer rounded border-gray-300 text-blue-600 focus:shadow-none"
+    #input
+    [checked]="checked"
+    [indeterminate]="indeterminate"
+    [disabled]="disabled"
+    (click)="_onInputClick()"
+    (change)="_onInteractionEvent($event)"
+    type="checkbox"
+  />
+
+  <span class="text-sm text-gray-800">
+    {{ display }}
+    <ng-content></ng-content>
+  </span>
+</label>
+<!-- 
+<pre>
+  checked: {{ checked }}
+  indeterminate: {{ indeterminate }}
+  nativeElement.checked {{ _inputElement?.nativeElement?.checked | json }}
+  disabled: {{ disabled }}
+</pre>
+-->
